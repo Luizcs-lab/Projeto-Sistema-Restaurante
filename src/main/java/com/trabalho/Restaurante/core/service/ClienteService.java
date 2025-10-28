@@ -1,0 +1,45 @@
+package com.trabalho.Restaurante.core.service;
+
+import com.trabalho.Restaurante.core.entity.BusinessException;
+import com.trabalho.Restaurante.core.entity.Cliente;
+import com.trabalho.Restaurante.core.repository.ClienteRepository;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class ClienteService {
+
+    private final ClienteRepository clienteRepository;
+
+    public ClienteService(ClienteRepository clienteRepository) {
+        this.clienteRepository = clienteRepository;
+    }
+
+    public Cliente cadastrar(Cliente cliente) {
+        if (cliente.getNome() == null || cliente.getNome().isBlank()) {
+            throw new BusinessException("O nome do cliente é obrigatório");
+        }
+
+        if (clienteRepository.findByTelefone(cliente.getTelefone()).isPresent()) {
+            throw new BusinessException("Telefone já cadastrado");
+        }
+
+        if (clienteRepository.findByEmail(cliente.getEmail()).isPresent()) {
+            throw new BusinessException("Email já cadastrado");
+        }
+
+        return clienteRepository.save(cliente);
+    }
+
+    public List<Cliente> listar() {
+        return clienteRepository.findAll();
+    }
+
+    public void excluir(Long id) {
+        if (!clienteRepository.existsById(id)) {
+            throw new BusinessException("Cliente não encontrado");
+        }
+        clienteRepository.deleteById(id);
+    }
+}
