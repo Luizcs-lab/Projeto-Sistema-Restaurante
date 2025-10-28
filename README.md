@@ -1,6 +1,6 @@
-<<<<<<< HEAD
-# trabalho-api
-=======
+
+
+
 # 🍽️ Projeto-Sistema-Restaurante - Backend
 
 ## 📋 Descrição
