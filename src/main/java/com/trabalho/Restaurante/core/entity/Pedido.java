@@ -1,65 +1,41 @@
 package com.trabalho.Restaurante.core.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
-@Table(name = "\"ORDER\"")
+@Table(name = "pedidos")
 public class Pedido {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	private String cliente;
+    @ManyToOne
+    private Cliente cliente;
 
-	private String prato;
+    @ManyToOne
+    private Funcionario funcionario;
 
-	private Integer quantidade;
+    @ManyToMany
+    private List<Prato> pratos;
 
-	public Pedido() {
-	}
+    private double valorTotal;
 
-	public Pedido(Long id, String cliente, String prato, Integer quantidade) {
-		this.id = id;
-		this.cliente = cliente;
-		this.prato = prato;
-		this.quantidade = quantidade;
-	}
+    private LocalDateTime dataHora = LocalDateTime.now();
 
-	public Long getId() {
-		return id;
-	}
+    public Pedido() {}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getCliente() {
-		return cliente;
-	}
-
-	public void setCliente(String cliente) {
-		this.cliente = cliente;
-	}
-
-	public String getPrato() {
-		return prato;
-	}
-
-	public void setPrato(String prato) {
-		this.prato = prato;
-	}
-
-	public Integer getQuantidade() {
-		return quantidade;
-	}
-
-	public void setQuantidade(Integer quantidade) {
-		this.quantidade = quantidade;
-	}
-
+    // Getters e Setters
+    public Long getId() { return id; }
+    public Cliente getCliente() { return cliente; }
+    public void setCliente(Cliente cliente) { this.cliente = cliente; }
+    public Funcionario getFuncionario() { return funcionario; }
+    public void setFuncionario(Funcionario funcionario) { this.funcionario = funcionario; }
+    public List<Prato> getPratos() { return pratos; }
+    public void setPratos(List<Prato> pratos) { this.pratos = pratos; }
+    public double getValorTotal() { return valorTotal; }
+    public void setValorTotal(double valorTotal) { this.valorTotal = valorTotal; }
+    public LocalDateTime getDataHora() { return dataHora; }
 }

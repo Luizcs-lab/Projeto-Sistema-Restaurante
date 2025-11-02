@@ -1,65 +1,41 @@
 package com.trabalho.Restaurante.core.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
-@Table(name = "\"DISH\"")
+@Table(name = "pratos")
 public class Prato {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	private String nomePrato;
+    @Column(unique = true, nullable = false)
+    private String nome;
 
-	private String descricao;
+    private String categoria;
 
-	private Float preco;
+    private double preco;
 
-	public Prato() {
-	}
+    private boolean disponivel = true;
 
-	public Prato(Long id, String nomePrato, String descricao, Float preco) {
-		this.id = id;
-		this.nomePrato = nomePrato;
-		this.descricao = descricao;
-		this.preco = preco;
-	}
+    public Prato() {}
 
-	public Long getId() {
-		return id;
-	}
+    public Prato(String nome, String categoria, double preco) {
+        this.nome = nome;
+        this.categoria = categoria;
+        this.preco = preco;
+        this.disponivel = true;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getNomePrato() {
-		return nomePrato;
-	}
-
-	public void setNomePrato(String nomePrato) {
-		this.nomePrato = nomePrato;
-	}
-
-	public String getDescricao() {
-		return descricao;
-	}
-
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
-
-	public Float getPreco() {
-		return preco;
-	}
-
-	public void setPreco(Float preco) {
-		this.preco = preco;
-	}
-
+    // Getters e Setters
+    public Long getId() { return id; }
+    public String getNome() { return nome; }
+    public void setNome(String nome) { this.nome = nome; }
+    public String getCategoria() { return categoria; }
+    public void setCategoria(String categoria) { this.categoria = categoria; }
+    public double getPreco() { return preco; }
+    public void setPreco(double preco) { this.preco = preco; }
+    public boolean isDisponivel() { return disponivel; }
+    public void setDisponivel(boolean disponivel) { this.disponivel = disponivel; }
 }
