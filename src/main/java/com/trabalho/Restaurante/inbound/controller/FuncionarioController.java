@@ -23,7 +23,7 @@ public class FuncionarioController {
         try {
             Funcionario autenticado = funcionarioService.autenticar(funcionario.getEmail(), funcionario.getSenha());
             return ResponseEntity.ok(autenticado);
-        } catch (com.trabalho.Restaurante.core.entity.BusinessException e) {
+        } catch (com.trabalho.Restaurante.core.exception.BusinessException e) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
         }
     }
@@ -34,7 +34,7 @@ public class FuncionarioController {
         try {
             Funcionario novo = funcionarioService.cadastrar(funcionario);
             return ResponseEntity.status(HttpStatus.CREATED).body(novo);
-        } catch (com.trabalho.Restaurante.core.entity.BusinessException e) {
+        } catch (com.trabalho.Restaurante.core.exception.BusinessException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
     }

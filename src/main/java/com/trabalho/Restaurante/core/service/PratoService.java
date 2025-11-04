@@ -1,4 +1,4 @@
-package main.java.com.trabalho.Restaurante.core.service;
+package com.trabalho.Restaurante.core.service;
 
 import com.trabalho.Restaurante.core.entity.Prato;
 import com.trabalho.Restaurante.core.exception.BusinessException;

@@ -1,22 +1,18 @@
+server:
+  port: 8080
+
 spring:
-  application:
-    name: crud
   datasource:
-    url: jdbc:h2:file:./data/demo
-    driverClassName: org.h2.Driver
-    username: sa
-    password:
+    url: jdbc:postgresql://localhost:5432/restaurante_db
+    username: postgres
+    password: 1234
+    driver-class-name: org.postgresql.Driver
+
   jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
-      ddl-auto: update
-    database-platform: org.hibernate.dialect.H2Dialect
-  h2:
-    console:
-      enabled: true
-      path: /h2-console
-spring.datasource.url=jdbc:postgresql://localhost:5432/restaurante_db
-spring.datasource.username=postgres
-spring.datasource.password=1234
-spring.jpa.hibernate.ddl-auto=update
-spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
-spring.jpa.show-sql=true
+      ddl-auto: update   # cria/atualiza tabelas automaticamente
+    show-sql: true        # mostra as queries no console
+    properties:
+      hibernate:
+        format_sql: true  # deixa as queries mais legíveis

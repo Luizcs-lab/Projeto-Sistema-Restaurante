@@ -1,6 +1,7 @@
 package com.trabalho.Restaurante.core.service;
 
 import com.trabalho.Restaurante.core.entity.Funcionario;
+import com.trabalho.Restaurante.core.exception.BusinessException;
 import com.trabalho.Restaurante.core.repository.FuncionarioRepository;
 import org.springframework.stereotype.Service;
 
@@ -41,5 +42,18 @@ public class FuncionarioService {
         }
 
         return funcionarioRepository.save(funcionario);
+    }
+
+    public Funcionario buscarPorId(Long id) {
+        // Usa findById do JpaRepository, que retorna Optional
+        Optional<Funcionario> funcionario = funcionarioRepository.findById(id); 
+
+        // Se o funcionário não for encontrado, lança uma BusinessException
+        if (funcionario.isEmpty()) {
+            // Se você não tiver BusinessException, use RuntimeException ou outra exceção que preferir
+            throw new BusinessException("Funcionário com ID " + id + " não encontrado.");
+        }
+
+        return funcionario.get();
     }
 }

@@ -1,7 +1,7 @@
 package com.trabalho.Restaurante.core.service;
 
-import com.trabalho.Restaurante.core.entity.BusinessException;
 import com.trabalho.Restaurante.core.entity.Cliente;
+import com.trabalho.Restaurante.core.exception.BusinessException;
 import com.trabalho.Restaurante.core.repository.ClienteRepository;
 import org.springframework.stereotype.Service;
 
@@ -42,4 +42,10 @@ public class ClienteService {
         }
         clienteRepository.deleteById(id);
     }
+
+    public Cliente buscarPorId(Long id) {
+    // O findById retorna um Optional, que deve ser tratado.
+    return clienteRepository.findById(id)
+            .orElseThrow(() -> new BusinessException("Cliente com ID " + id + " não encontrado."));
+}
 }

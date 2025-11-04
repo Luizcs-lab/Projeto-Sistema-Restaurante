@@ -5,8 +5,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import com.trabalho.Restaurante.core.entity.BusinessException;
 import com.trabalho.Restaurante.core.entity.ExceptionResponse;
+import com.trabalho.Restaurante.core.exception.BusinessException;
 
 @RestControllerAdvice
 public class RequestHandler {

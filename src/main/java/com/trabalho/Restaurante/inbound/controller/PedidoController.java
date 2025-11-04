@@ -1,4 +1,4 @@
-package main.java.com.trabalho.Restaurante.inbound.controller;
+package com.trabalho.Restaurante.inbound.controller;
 
 import com.trabalho.Restaurante.core.entity.Pedido;
 import com.trabalho.Restaurante.core.exception.BusinessException;

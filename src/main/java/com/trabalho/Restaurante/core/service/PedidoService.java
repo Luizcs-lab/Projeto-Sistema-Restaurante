@@ -1,4 +1,4 @@
-package main.java.com.trabalho.Restaurante.core.service;
+package com.trabalho.Restaurante.core.service;
 
 import com.trabalho.Restaurante.core.entity.*;
 import com.trabalho.Restaurante.core.exception.BusinessException;
@@ -50,6 +50,10 @@ public class PedidoService {
         pedido.setValorTotal(total);
 
         return pedidoRepository.save(pedido);
+
+        // Dentro do método criarPedido(Pedido pedido)
+// Dentro do método criarPedido(Pedido pedido)
+
     }
 
     public List<Pedido> listarPedidos() {

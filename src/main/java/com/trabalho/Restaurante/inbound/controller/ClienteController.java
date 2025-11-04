@@ -1,7 +1,7 @@
 package com.trabalho.Restaurante.inbound.controller;
 
-import com.trabalho.Restaurante.core.entity.BusinessException;
 import com.trabalho.Restaurante.core.entity.Cliente;
+import com.trabalho.Restaurante.core.exception.BusinessException;
 import com.trabalho.Restaurante.core.service.ClienteService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;

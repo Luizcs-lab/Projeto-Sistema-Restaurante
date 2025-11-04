@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.trabalho.Restaurante.core.dto.UserDto;
-import com.trabalho.Restaurante.core.entity.BusinessException;
+import com.trabalho.Restaurante.core.exception.BusinessException;
 import com.trabalho.Restaurante.core.mapper.UserMapper;
 import com.trabalho.Restaurante.core.repository.UserRepository;
 
