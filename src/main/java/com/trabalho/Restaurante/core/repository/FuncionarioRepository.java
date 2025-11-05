@@ -1,19 +1,16 @@
+// com.trabalho.Restaurante.core.repository/FuncionarioRepository.java
+
 package com.trabalho.Restaurante.core.repository;
 
 import java.util.Optional;
-
+import org.springframework.data.jpa.repository.JpaRepository;
 import com.trabalho.Restaurante.core.entity.Funcionario;
 
-public class FuncionarioRepository {
+public interface FuncionarioRepository extends JpaRepository<Funcionario, Long> {
 
-    public Optional<Funcionario> findByEmail(String email) {
-        // 
-        throw new UnsupportedOperationException("Unimplemented method 'findByEmail'");
-    }
-
-    public Funcionario save(Funcionario funcionario) {
-        // 
-        throw new UnsupportedOperationException("Unimplemented method 'save'");
-    }
+    // Spring Data JPA cria a query automaticamente
+    Optional<Funcionario> findByEmail(String email);
     
+    // Todos os outros métodos (save, findAll, findById, deleteById)
+    // são herdados de JpaRepository e não precisam ser declarados aqui.
 }
