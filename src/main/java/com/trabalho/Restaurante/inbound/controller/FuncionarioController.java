@@ -21,7 +21,7 @@ public class FuncionarioController {
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody Funcionario funcionario) throws Exception {
         try {
-            Funcionario autenticado = funcionarioService.autenticar(funcionario.getEmail(), funcionario.getSenha());
+            Funcionario autenticado = FuncionarioService.autenticar(funcionario.getEmail(), funcionario.getSenha());
             return ResponseEntity.ok(autenticado);
         } catch (com.trabalho.Restaurante.core.exception.BusinessException e) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());

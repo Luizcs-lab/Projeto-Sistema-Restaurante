@@ -23,7 +23,7 @@ public class PedidoController {
     @PostMapping("/criar")
     public ResponseEntity<?> criar(@RequestBody Pedido pedido) {
         try {
-            Pedido novo = pedidoService.criarPedido(pedido);
+            Pedido novo = PedidoService.criarPedido(pedido);
             return ResponseEntity.status(HttpStatus.CREATED).body(novo);
         } catch (BusinessException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());

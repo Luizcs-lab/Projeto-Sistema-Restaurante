@@ -38,4 +38,9 @@ public class Pedido {
     public double getValorTotal() { return valorTotal; }
     public void setValorTotal(double valorTotal) { this.valorTotal = valorTotal; }
     public LocalDateTime getDataHora() { return dataHora; }
+
+    public void setId(long l) {
+        // 
+        throw new UnsupportedOperationException("Unimplemented method 'setId'");
+    }
 }

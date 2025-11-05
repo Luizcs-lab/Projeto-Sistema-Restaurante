@@ -13,6 +13,5 @@ public interface FuncionarioRepository extends JpaRepository<Funcionario, Long> 
    // O Spring Data JPA cria a implementação deste método automaticamente
     Optional<Funcionario> findByEmail(String email);
 
-    public Funcionario save(Funcionario funcionario);
     
 }

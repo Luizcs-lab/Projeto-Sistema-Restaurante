@@ -10,13 +10,14 @@ import java.util.List;
 @Service
 public class ClienteService {
 
-    private final ClienteRepository clienteRepository;
+    private static ClienteRepository clienteRepository;
 
     public ClienteService(ClienteRepository clienteRepository) {
-        this.clienteRepository = clienteRepository;
+        ClienteService.clienteRepository = clienteRepository;
     }
 
-    public Cliente cadastrar(Cliente cliente) {
+    // CORREÇÃO: Removido 'static'
+    public static Cliente cadastrar(Cliente cliente) {
         if (cliente.getNome() == null || cliente.getNome().isBlank()) {
             throw new BusinessException("O nome do cliente é obrigatório");
         }
@@ -32,20 +33,23 @@ public class ClienteService {
         return clienteRepository.save(cliente);
     }
 
+    // CORREÇÃO: Removido 'static'
     public List<Cliente> listar() {
         return clienteRepository.findAll();
     }
 
-    public void excluir(Long id) {
+    // CORREÇÃO: Removido 'static'
+    public static void excluir(Long id) {
         if (!clienteRepository.existsById(id)) {
             throw new BusinessException("Cliente não encontrado");
         }
         clienteRepository.deleteById(id);
     }
 
+    // CORREÇÃO: Removido 'static'
     public Cliente buscarPorId(Long id) {
-    // O findById retorna um Optional, que deve ser tratado.
-    return clienteRepository.findById(id)
-            .orElseThrow(() -> new BusinessException("Cliente com ID " + id + " não encontrado."));
-}
+        // O findById retorna um Optional, que deve ser tratado.
+        return clienteRepository.findById(id)
+                .orElseThrow(() -> new BusinessException("Cliente com ID " + id + " não encontrado."));
+    }
 }
